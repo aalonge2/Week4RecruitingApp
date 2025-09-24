@@ -1,0 +1,37 @@
+﻿@page
+@model RecruitingApp.Pages.Companies.IndexModel
+@{
+    ViewData["Title"] = "All Companies";
+}
+
+<h1>All Companies</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Create New Company</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Company[0].Name)</th>
+        <th>Industry</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Company)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@item.Industry?.Name</td>
+            <td>
+                <a asp-page="Edit" asp-route-id="@item.CompanyId">Edit</a> |
+                <a asp-page="Details" asp-route-id="@item.CompanyId">Details</a> |
+                <a asp-page="Delete" asp-route-id="@item.CompanyId">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+

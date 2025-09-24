@@ -1,0 +1,87 @@
+﻿@page
+@model RecruitingApp.Pages.Candidates.CreateModel
+@{
+    ViewData["Title"] = "Create a new Candidate";
+}
+
+<h1>Create a new Candidate</h1>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Candidate.FirstName" class="form-label"></label>
+                <input asp-for="Candidate.FirstName" class="form-control" />
+                <span asp-validation-for="Candidate.FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Candidate.LastName" class="form-label"></label>
+                <input asp-for="Candidate.LastName" class="form-control" />
+                <span asp-validation-for="Candidate.LastName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Candidate.Email" class="form-label"></label>
+                <input asp-for="Candidate.Email" class="form-control" />
+                <span asp-validation-for="Candidate.Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Candidate.Phone" class="form-label"></label>
+                <input asp-for="Candidate.Phone" class="form-control" />
+                <span asp-validation-for="Candidate.Phone" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Candidate.LinkedInUrl" class="form-label"></label>
+                <input asp-for="Candidate.LinkedInUrl" class="form-control" />
+                <span asp-validation-for="Candidate.LinkedInUrl" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Candidate.SalaryExpectation" class="form-label"></label>
+                <input asp-for="Candidate.SalaryExpectation" class="form-control" />
+                <span asp-validation-for="Candidate.SalaryExpectation" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Candidate.DateApplied" class="form-label"></label>
+                <input asp-for="Candidate.DateApplied" class="form-control" />
+                <span asp-validation-for="Candidate.DateApplied" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Job Title</label>
+                <select asp-for="Candidate.JobTitleId" asp-items="Model.JobTitleOptions" class="form-select"></select>
+                <span asp-validation-for="Candidate.JobTitleId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Industry</label>
+                <select asp-for="Candidate.IndustryId" asp-items="Model.IndustryOptions" class="form-select">
+                    <option value="">-- None --</option>
+                </select>
+                <span asp-validation-for="Candidate.IndustryId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Company</label>
+                <select asp-for="Candidate.CompanyId" asp-items="Model.CompanyOptions" class="form-select">
+                    <option value="">-- None --</option>
+                </select>
+                <span asp-validation-for="Candidate.CompanyId" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

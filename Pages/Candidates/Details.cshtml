@@ -1,0 +1,49 @@
+﻿@page
+@model RecruitingApp.Pages.Candidates.DetailsModel
+@{
+    ViewData["Title"] = "Candidate Details";
+}
+
+<h1>Candidate Details</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-3">Full Name</dt>
+        <dd class="col-sm-9">@Model.Candidate.FullName</dd>
+
+        <dt class="col-sm-3">Job Title</dt>
+        <dd class="col-sm-9">@Model.Candidate.JobTitle?.Title</dd>
+
+        <dt class="col-sm-3">Company</dt>
+        <dd class="col-sm-9">@Model.Candidate.Company?.Name</dd>
+
+        <dt class="col-sm-3">Industry</dt>
+        <dd class="col-sm-9">@Model.Candidate.Industry?.Name</dd>
+
+        <dt class="col-sm-3">Email</dt>
+        <dd class="col-sm-9">@Model.Candidate.Email</dd>
+
+        <dt class="col-sm-3">Phone</dt>
+        <dd class="col-sm-9">@Model.Candidate.Phone</dd>
+
+        <dt class="col-sm-3">LinkedIn</dt>
+        <dd class="col-sm-9">
+            @if (!string.IsNullOrWhiteSpace(Model.Candidate.LinkedInUrl))
+            {
+                <a href="@Model.Candidate.LinkedInUrl" target="_blank" rel="noopener">@Model.Candidate.LinkedInUrl</a>
+            }
+        </dd>
+
+        <dt class="col-sm-3">Salary Expectation</dt>
+        <dd class="col-sm-9">@Model.Candidate.SalaryExpectation</dd>
+
+        <dt class="col-sm-3">Date Applied</dt>
+        <dd class="col-sm-9">@Model.Candidate.DateApplied?.ToString("yyyy-MM-dd")</dd>
+    </dl>
+</div>
+
+<p>
+    <a asp-page="Edit" asp-route-id="@Model.Candidate.CandidateId" class="btn btn-primary">Edit</a>
+    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+</p>
+

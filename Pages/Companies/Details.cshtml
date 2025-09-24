@@ -1,0 +1,71 @@
+﻿@page
+@model RecruitingApp.Pages.Companies.DetailsModel
+@{
+    ViewData["Title"] = "Company Details";
+}
+<h1>Company: @Model.Company.Name</h1>
+
+
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-3">Industry</dt>
+        <dd class="col-sm-9">@Model.Company.Industry?.Name</dd>
+
+        <dt class="col-sm-3">Website</dt>
+        <dd class="col-sm-9">
+            @if (!string.IsNullOrWhiteSpace(Model.Company.Website))
+            {
+                <a href="@Model.Company.Website" target="_blank" rel="noopener">@Model.Company.Website</a>
+            }
+        </dd>
+
+        <dt class="col-sm-3">Email</dt>
+        <dd class="col-sm-9">@Model.Company.Email</dd>
+
+        <dt class="col-sm-3">Phone</dt>
+        <dd class="col-sm-9">@Model.Company.Phone</dd>
+
+        <dt class="col-sm-3">Location</dt>
+        <dd class="col-sm-9"><pre class="mb-0">@Model.Company.Location</pre></dd>
+    </dl>
+</div>
+
+<h2 class="mt-4">Candidates</h2>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>Full Name</th>
+        <th>Job Title</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Date Applied</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.Candidates.Count == 0)
+    {
+        <tr><td colspan="5" class="text-muted">No candidates for this company yet.</td></tr>
+    }
+    else
+    {
+        @foreach (var c in Model.Candidates)
+        {
+            <tr>
+                <td>@c.FullName</td>
+                <td>@c.JobTitle?.Title</td>
+                <td>@c.Email</td>
+                <td>@c.Phone</td>
+                <td>@c.DateApplied?.ToString("yyyy-MM-dd")</td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+<p>
+    <a asp-page="Edit" asp-route-id="@Model.Company.CompanyId" class="btn btn-primary">Edit</a>
+    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+</p>
+
+

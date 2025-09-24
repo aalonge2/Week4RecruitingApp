@@ -1,0 +1,48 @@
+﻿@page
+@model RecruitingApp.Pages.Candidates.IndexModel
+@{
+    ViewData["Title"] = "All Candidates";
+}
+
+<h1>All Candidates</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Create New Candidate</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Full Name</th>
+        <th>Job Title</th>
+        <th>Company</th>
+        <th>Industry</th>
+        <th>Date Applied</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Candidate)
+    {
+        <tr>
+            <td>@item.FullName</td>
+            <td>@item.JobTitle?.Title</td>
+            <td>@item.Company?.Name</td>
+            <td>@item.Industry?.Name</td>
+            <td>@item.DateApplied?.ToString("yyyy-MM-dd")</td>
+            <td>
+                <a asp-page="Edit" asp-route-id="@item.CandidateId">Edit</a> |
+                <a asp-page="Details" asp-route-id="@item.CandidateId">Details</a> |
+                <a asp-page="Delete" asp-route-id="@item.CandidateId">Delete</a>
+            </td>
+        </tr>
+    }
+    @if (!Model.Candidate.Any())
+    {
+        <tr>
+            <td colspan="6" class="text-muted">No candidates yet.</td>
+        </tr>
+    }
+    </tbody>
+</table>
+

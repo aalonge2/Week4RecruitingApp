@@ -1,0 +1,47 @@
+﻿@page
+@model RecruitingApp.Pages.JobTitles.IndexModel
+@{
+    ViewData["Title"] = "All Job Titles";
+}
+<h1>All Job Titles</h1>
+
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.JobTitle[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobTitle[0].SalaryMin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobTitle[0].SalaryMax)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.JobTitle) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaryMin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalaryMax)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.JobTitleId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.JobTitleId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.JobTitleId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

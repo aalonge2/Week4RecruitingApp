@@ -1,0 +1,36 @@
+﻿@page
+@model RecruitingApp.Pages.JobTitles.DetailsModel
+@{
+    ViewData["Title"] = "Job Title Details";
+}
+<h1>Job Title Details</h1>
+
+
+<div>
+    <h4>JobTitle</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobTitle.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobTitle.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobTitle.SalaryMin)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobTitle.SalaryMin)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JobTitle.SalaryMax)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JobTitle.SalaryMax)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.JobTitle.JobTitleId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
